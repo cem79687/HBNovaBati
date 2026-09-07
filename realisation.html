@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <title>Nos Réalisations - HBNova Bâti Beauvais | Chantiers Extension, Rénovation, Isolation</title>
+    <meta name="description" content="Découvrez les réalisations de HBNova Bâti à Beauvais et dans l'Oise. Extension, rénovation, isolation thermique, carrelage, ravalement de façade.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Nos Réalisations - HBNova Bâti Beauvais">
+    <meta property="og:description" content="Chantiers d'extension, rénovation, isolation et ravalement réalisés par HBNova Bâti à Beauvais, dans l'Oise et le Val-d'Oise.">
+    <meta property="og:image" content="https://www.hbnovabati.fr/img/chantier_banner.webp">
+    <meta property="og:url" content="https://www.hbnovabati.fr/realisation.html">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.hbnovabati.fr/realisation.html">
+
+    <!-- Ressources -->
+    <link href="img/hbnova_icone.svg" rel="icon" type="image/svg+xml" />
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</noscript>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ── Hero ── */
+        .realisation-hero {
+            background-color: #2c2c2a;
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        .realisation-hero h1 {
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+        .realisation-hero p {
+            color: rgba(255,255,255,0.55);
+            font-size: 15px;
+        }
+        .realisation-hero .accent {
+            display: inline-block;
+            width: 50px;
+            height: 4px;
+            background: #e65100;
+            border-radius: 2px;
+            margin: 12px auto 0;
+        }
+
+        /* ── Filtres ── */
+        .filtres {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 30px 20px;
+            background: #f5f5f5;
+        }
+        .filtre-btn {
+            padding: 8px 22px;
+            border: 2px solid #2c2c2a;
+            background: transparent;
+            color: #2c2c2a;
+            font-size: 17px;
+            font-weight: 700;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all .25s ease;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+        .filtre-btn:hover,
+        .filtre-btn.actif {
+            background: #bf360c;
+            border-color: #bf360c;
+            color: #fff;
+        }
+
+        /* ── Grille galerie ── */
+        .galerie {
+            padding: 30px 20px 60px;
+            background: #f5f5f5;
+        }
+        .galerie-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        @media (max-width: 768px) {
+            .galerie-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .galerie-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ── Carte photo ── */
+        .photo-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            background: #2c2c2a;
+        }
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .4s ease;
+            display: block;
+        }
+        .photo-card:hover img {
+            transform: scale(1.1);
+        }
+        .photo-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(44, 44, 42, 0);
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+            transition: background .3s ease;
+        }
+        .photo-card:hover .photo-overlay {
+            background: rgba(44, 44, 42, 0.65);
+        }
+        .photo-label {
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all .3s ease;
+        }
+        .photo-cat {
+            display: inline-block;
+            background: #fff;
+            color: #bf360c;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+        .photo-card:hover .photo-label {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Photo masquée par filtre ── */
+        .photo-card.masque {
+            display: none;
+        }
+
+        /* ── Lightbox ── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .lightbox.open {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 28px;
+            color: #fff;
+            font-size: 36px;
+            cursor: pointer;
+            line-height: 1;
+            opacity: .8;
+            transition: opacity .2s;
+        }
+        .lightbox-close:hover { opacity: 1; }
+        .lightbox-caption {
+            color: rgba(255,255,255,0.6);
+            font-size: 13px;
+            margin-top: 12px;
+            text-align: center;
+        }
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 32px;
+            cursor: pointer;
+            opacity: .7;
+            transition: opacity .2s;
+            padding: 10px;
+        }
+        .lightbox-nav:hover { opacity: 1; }
+        .lightbox-prev { left: 16px; }
+        .lightbox-next { right: 16px; }
+
+        /* ── CTA bas de page ── */
+        .realisation-cta {
+            background: #2c2c2a;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .realisation-cta h2 {
+            color: #fff;
+            font-size: 1.6rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+        .realisation-cta p {
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 24px;
+        }
+        .btn-orange-cta {
+            background: #bf360c;
+            color: #fff;
+            border: none;
+            padding: 14px 36px;
+            font-size: 17px;
+            font-weight: 700;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background .2s;
+            display: inline-block;
+        }
+        .btn-orange-cta:hover {
+            background: #982b09;
+            color: #fff;
+        }
+            .realisation-assurances {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+        .realisation-assurances span {
+            color: rgba(255,255,255,0.7);
+            font-size: 13px;
+        }
+        .realisation-assurances span i {
+            color: #e65100;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-anthracite">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <div class="d-flex align-items-center">
+                    <img src="img/hbnova_logo_sombre.svg" alt="Logo HBNova Bâti" width="165" height="55" class="me-2">
+                    <p class="fst-italic text-white mb-0">HBNova Bâti</p>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Ouvrir le menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto bg-anthracite">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#apropos">À Propos de Nous</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#prestations">Prestations</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="realisation.html">Nos Réalisations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item nav-phone">
+                        <a class="nav-link nav-phone-link" href="tel:0783388572">
+                            <i class="fa fa-phone me-1"></i> 07 83 38 85 72
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Hero -->
+<div class="realisation-hero">
+    <h1>Nos Réalisations</h1>
+    <p>Découvrez nos chantiers réalisés à Beauvais, dans l'Oise (60) et le Val-d'Oise (95)</p>
+    <div class="accent"></div>
+</div>
+
+<!-- Filtres -->
+<div class="filtres">
+    <button class="filtre-btn actif" data-filtre="tous">Tous</button>
+    <button class="filtre-btn" data-filtre="extension">Extension</button>
+    <button class="filtre-btn" data-filtre="renovation">Rénovation</button>
+    <button class="filtre-btn" data-filtre="isolation">Isolation</button>
+    <button class="filtre-btn" data-filtre="carrelage">Carrelage</button>
+    <button class="filtre-btn" data-filtre="ravalement">Ravalement</button>
+</div>
+
+<!-- Galerie -->
+<div class="galerie">
+    <div class="galerie-grid" id="galerieGrid">
+
+        <!-- Extension -->
+        <div class="photo-card" data-cat="extension" data-label="Extension de maison">
+            <img src="img/e1.webp" width="500" height="375" alt="Extension de maison" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Extension</div><br>
+                    Extension de maison
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="extension" data-label="Extension de maison">
+            <img src="img/p17.webp" width="500" height="314" alt="Extension de maison" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Extension</div><br>
+                    Extension de maison
+                </div>
+            </div>
+        </div>
+        
+        <div class="photo-card" data-cat="extension" data-label="Extension — vue extérieure">
+            <img src="img/p16.webp" width="500" height="314" alt="Extension vue extérieure" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Extension</div><br>
+                    Vue extérieure
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="extension" data-label="Extension — gros œuvre">
+            <img src="img/ext10.webp" width="768" height="1024" alt="Extension gros oeuvre" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Extension</div><br>
+                    Gros œuvre
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="extension" data-label="Extension — maçonnerie briques">
+            <img src="img/chantier_banner.webp" width="1600" height="1200" alt="Extension maçonnerie" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Extension</div><br>
+                    Maçonnerie briques
+                </div>
+            </div>
+        </div>
+
+        <!-- Rénovation -->
+        <div class="photo-card" data-cat="renovation" data-label="Rénovation intérieure">
+            <img src="img/p1.webp" width="500" height="400" alt="Rénovation intérieure" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Rénovation</div><br>
+                    Rénovation intérieure
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="renovation" data-label="Rénovation — avant/après">
+            <img src="img/p2.webp" width="899" height="600" alt="Rénovation avant après" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Rénovation</div><br>
+                    Avant / Après
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="renovation" data-label="Rénovation complète">
+            <img src="img/p5.webp" width="500" height="334" alt="Rénovation complète" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Rénovation</div><br>
+                    Rénovation complète
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="renovation" data-label="Rénovation — finitions">
+            <img src="img/p6.webp" width="500" height="314" alt="Rénovation finitions" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Rénovation</div><br>
+                    Finitions
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="renovation" data-label="Rénovation — chantier">
+            <img src="img/p10.webp" width="500" height="314" alt="Rénovation chantier" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Rénovation</div><br>
+                    En cours de chantier
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="renovation" data-label="Rénovation maison">
+            <img src="img/p11.webp" width="500" height="314" alt="Rénovation maison" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Rénovation</div><br>
+                    Rénovation maison
+                </div>
+            </div>
+        </div>
+
+        <!-- Isolation -->
+        <div class="photo-card" data-cat="isolation" data-label="Isolation thermique extérieure">
+            <img src="img/s-1.webp" width="500" height="333" alt="Isolation thermique extérieure" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Isolation</div><br>
+                    ITE — Isolation extérieure
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="isolation" data-label="Isolation thermique intérieure">
+            <img src="img/service-4.webp" width="550" height="400" alt="Isolation thermique intérieure" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Isolation</div><br>
+                    ITI — Isolation intérieure
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="isolation" data-label="Isolation — pose">
+            <img src="img/p16.webp" width="500" height="314" alt="Isolation pose" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Isolation</div><br>
+                    Pose isolation
+                </div>
+            </div>
+        </div>
+
+        <!-- Carrelage -->
+        <div class="photo-card" data-cat="carrelage" data-label="Carrelage — salle de bain">
+            <img src="img/c1.webp" width="500" height="314" alt="Carrelage salle de bain" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Carrelage</div><br>
+                    Au Sol
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="carrelage" data-label="Carrelage — au sol">
+            <img src="img/car20.webp" width="540" height="1200" alt="Carrelage au Sol" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Carrelage</div><br>
+                    Au Sol
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="carrelage" data-label="Carrelage — Terasse extérieure">
+            <img src="img/c2.webp" width="500" height="600" alt="Carrelage Terasse extérieure" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Carrelage</div><br>
+                    Terasse extérieure
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="carrelage" data-label="Carrelage — escalier">
+            <img src="img/p12.webp" width="1200" height="900" alt="Carrelage escalier" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Carrelage</div><br>
+                    Escalier
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="carrelage" data-label="Carrelage — salle de bain">
+            <img src="img/c18.webp" width="500" height="314" alt="Carrelage salle de bain" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Carrelage</div><br>
+                    Salle de bain
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="carrelage" data-label="Carrelage — mosaïque bois terminé">
+            <img src="img/car3.webp" width="540" height="1200" alt="Carrelage mosaïque bois" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Carrelage</div><br>
+                    Mosaïque bois — terminé
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="carrelage" data-label="Carrelage marbre — en cours">
+            <img src="img/car1.webp" width="810" height="1080" alt="Carrelage marbre en cours" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Carrelage</div><br>
+                    Marbre — en cours
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="carrelage" data-label="Carrelage — pose mosaïque">
+            <img src="img/car2.webp" width="540" height="1200" alt="Pose carrelage mosaïque" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Carrelage</div><br>
+                    Pose mosaïque
+                </div>
+            </div>
+        </div>
+
+        <!-- Ravalement -->
+        <div class="photo-card" data-cat="ravalement" data-label="Ravalement de façade">
+            <img src="img/r1.webp" width="1920" height="1080" alt="Ravalement de façade" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Ravalement</div><br>
+                    Ravalement façade
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="ravalement" data-label="Ravalement — enduit">
+            <img src="img/r2.webp" width="500" height="334" alt="Ravalement enduit" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Ravalement</div><br>
+                    Enduit monocouche
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="ravalement" data-label="Ravalement — finition">
+            <img src="img/r3.webp" width="1620" height="1080" alt="Ravalement finition" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Ravalement</div><br>
+                    Finition façade
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="ravalement" data-label="Ravalement — résultat">
+            <img src="img/r12.webp" width="500" height="314" alt="Ravalement résultat" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Ravalement</div><br>
+                    Résultat final
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="ravalement" data-label="Ravalement — chantier">
+            <img src="img/r13.webp" width="500" height="314" alt="Ravalement chantier" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Ravalement</div><br>
+                    En cours
+                </div>
+            </div>
+        </div>
+        <div class="photo-card" data-cat="ravalement" data-label="Ravalement — avant après">
+            <img src="img/r21.webp" width="500" height="314" alt="Ravalement avant après" loading="lazy">
+            <div class="photo-overlay">
+                <div class="photo-label">
+                    <div class="photo-cat">Ravalement</div><br>
+                    Avant / Après
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- CTA -->
+<div class="realisation-cta">
+    <h2>Un projet en tête ?</h2>
+    <p>Contactez-nous pour une étude gratuite et sans engagement</p>
+    <a href="contact.html" class="btn-orange-cta">Demander un devis gratuit</a>
+        <div class="realisation-assurances">
+            <span><i class="fa fa-shield-alt me-1"></i> RC Pro assurée</span>
+            <span><i class="fa fa-hard-hat me-1"></i> Décennale partenaires</span>
+            <span><i class="fa fa-check me-1"></i> Devis gratuit</span>
+        </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <span class="lightbox-nav lightbox-prev" id="lightboxPrev">&#8249;</span>
+    <img src="" alt="" id="lightboxImg" loading="lazy">
+    <p class="lightbox-caption" id="lightboxCaption"></p>
+    <span class="lightbox-nav lightbox-next" id="lightboxNext">&#8250;</span>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+<script>
+    const cards = document.querySelectorAll('.photo-card');
+    const filtres = document.querySelectorAll('.filtre-btn');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    let currentIndex = 0;
+    let visibleCards = [];
+
+    function getVisible() {
+        return Array.from(cards).filter(c => !c.classList.contains('masque'));
+    }
+
+    // Filtres
+    filtres.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filtres.forEach(b => b.classList.remove('actif'));
+            btn.classList.add('actif');
+            const filtre = btn.dataset.filtre;
+            cards.forEach(card => {
+                if (filtre === 'tous' || card.dataset.cat === filtre) {
+                    card.classList.remove('masque');
+                } else {
+                    card.classList.add('masque');
+                }
+            });
+        });
+    });
+
+    // Lightbox — ouvrir
+    cards.forEach((card, index) => {
+        card.addEventListener('click', () => {
+            visibleCards = getVisible();
+            currentIndex = visibleCards.indexOf(card);
+            openLightbox(currentIndex);
+        });
+    });
+
+    function openLightbox(idx) {
+        visibleCards = getVisible();
+        const card = visibleCards[idx];
+        lightboxImg.src = card.querySelector('img').src;
+        lightboxImg.alt = card.querySelector('img').alt;
+        lightboxCaption.textContent = card.dataset.label;
+        lightbox.classList.add('open');
+        currentIndex = idx;
+    }
+
+    // Fermer
+    document.getElementById('lightboxClose').addEventListener('click', () => {
+        lightbox.classList.remove('open');
+    });
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) lightbox.classList.remove('open');
+    });
+
+    // Navigation
+    document.getElementById('lightboxPrev').addEventListener('click', (e) => {
+        e.stopPropagation();
+        visibleCards = getVisible();
+        currentIndex = (currentIndex - 1 + visibleCards.length) % visibleCards.length;
+        openLightbox(currentIndex);
+    });
+    document.getElementById('lightboxNext').addEventListener('click', (e) => {
+        e.stopPropagation();
+        visibleCards = getVisible();
+        currentIndex = (currentIndex + 1) % visibleCards.length;
+        openLightbox(currentIndex);
+    });
+
+    // Navigation clavier
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'ArrowLeft') document.getElementById('lightboxPrev').click();
+        if (e.key === 'ArrowRight') document.getElementById('lightboxNext').click();
+        if (e.key === 'Escape') lightbox.classList.remove('open');
+    });
+</script>
+
+
+  <!-- Scroll reveal natif (remplace WOW.js) -->
+  <script>
+    (function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.wow').forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
+  </script>
+
+  <!-- CTA flottant mobile -->
+  <a href="contact.html" class="cta-float-mobile" id="cta-float" aria-label="Demander un devis gratuit">
+    <i class="fa fa-envelope"></i><span>Devis gratuit</span>
+  </a>
+
+  <!-- Bouton retour haut de page -->
+  <button class="back-to-top" id="back-to-top" aria-label="Retour en haut de page" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fa fa-chevron-up"></i>
+  </button>
+
+  <script>
+    // CTA flottant + back-to-top
+    var ctaFloat = document.getElementById('cta-float');
+    var backTop  = document.getElementById('back-to-top');
+    window.addEventListener('scroll', function() {
+      var show = window.scrollY > 400;
+      if (ctaFloat) ctaFloat.classList.toggle('visible', show);
+      if (backTop)  backTop.classList.toggle('visible', show);
+    });
+  </script>
+
+<!-- ══ FOOTER ══════════════════════════════════════════════ -->
+<footer class="footer-hbnova">
+
+    <!-- CTA bande -->
+    <div class="footer-cta-band">
+        <div class="container">
+            <div class="footer-cta-inner">
+                <div>
+                    <h2 class="footer-cta-title">Prêt pour votre prochain projet ?</h2>
+                    <p class="footer-cta-sub">Contactez-nous pour une étude et un devis gratuits — Réponse sous 24h</p>
+                </div>
+                <div class="footer-cta-btns">
+                    <a href="contact.html" class="footer-btn-primary">Devis gratuit</a>
+                    <a href="tel:0783388572" class="footer-btn-secondary"><i class="fa fa-phone me-2"></i>07 83 38 85 72</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Corps du footer -->
+    <div class="footer-body">
+        <div class="container">
+            <div class="row g-4 py-5">
+
+                <!-- Colonne 1 — Identité -->
+                <div class="col-lg-3 col-md-6">
+                    <a href="index.html" class="footer-brand">
+                        <img src="img/hbnova_logo_sombre.svg" alt="Logo HBNova Bâti" width="135" height="45" class="mb-3" loading="lazy">
+                    </a>
+                    <p class="footer-adresse">
+                        <i class="fa fa-map-marker-alt me-2" style="color:#e65100;"></i>
+                        67, Rue St Just des Marais<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;60000 Beauvais
+                    </p>
+                    <p class="footer-adresse">
+                        <i class="fa fa-phone me-2" style="color:#e65100;"></i>
+                        <a href="tel:0783388572" class="footer-contact-link">07 83 38 85 72</a>
+                    </p>
+                    <p class="footer-adresse">
+                        <i class="fa fa-map me-2" style="color:#e65100;"></i>
+                        Oise (60) · Val-d'Oise (95)
+                    </p>
+                </div>
+
+                <!-- Colonne 2 — Navigation -->
+                <div class="col-lg-2 col-md-6">
+                    <h3 class="footer-col-title">Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fa fa-chevron-right me-2"></i>Accueil</a></li>
+                        <li><a href="index.html#apropos"><i class="fa fa-chevron-right me-2"></i>À Propos</a></li>
+                        <li><a href="index.html#prestations"><i class="fa fa-chevron-right me-2"></i>Prestations</a></li>
+                        <li><a href="realisation.html"><i class="fa fa-chevron-right me-2"></i>Réalisations</a></li>
+                        <li><a href="contact.html"><i class="fa fa-chevron-right me-2"></i>Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 3 — Prestations -->
+                <div class="col-lg-3 col-md-6">
+                    <h3 class="footer-col-title">Nos Prestations</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html#prestations"><i class="fa fa-chevron-right me-2"></i>Extension de maison</a></li>
+                        <li><a href="index.html#prestations"><i class="fa fa-chevron-right me-2"></i>Rénovation intérieure</a></li>
+                        <li><a href="index.html#prestations"><i class="fa fa-chevron-right me-2"></i>Isolation extérieure (ITE)</a></li>
+                        <li><a href="index.html#prestations"><i class="fa fa-chevron-right me-2"></i>Isolation intérieure (ITI)</a></li>
+                        <li><a href="index.html#prestations"><i class="fa fa-chevron-right me-2"></i>Carrelage - Faïence</a></li>
+                        <li><a href="index.html#prestations"><i class="fa fa-chevron-right me-2"></i>Ravalement de façade</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 4 — Horaires -->
+                <div class="col-lg-2 col-md-6">
+                    <h3 class="footer-col-title">Horaires</h3>
+                    <ul class="footer-horaires">
+                        <li><span>Lundi – Vendredi</span></li>
+                        <li class="footer-heure">8h00 – 12h00</li>
+                        <li class="footer-heure">14h00 – 18h00</li>
+                        <li style="margin-top:8px;"><span>Samedi – Dimanche</span></li>
+                        <li class="footer-heure footer-heure--off">Fermé</li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 5 — Zone -->
+                <div class="col-lg-2 col-md-6">
+                    <h3 class="footer-col-title">Zone d'intervention</h3>
+                    <div class="footer-zones">
+                        <span class="footer-zone-tag">Beauvais</span>
+                        <span class="footer-zone-tag">Oise (60)</span>
+                        <span class="footer-zone-tag">Val-d'Oise (95)</span>
+                        <span class="footer-zone-tag">Compiègne</span>
+                        <span class="footer-zone-tag">Creil</span>
+                        <span class="footer-zone-tag">Cergy</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Barre copyright -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="footer-bottom-inner">
+                <p>&copy; 2026 HBNova Bâti — Tous droits réservés</p>
+                <p><a href="mentions-legales.html">Mentions légales & Politique de confidentialité</a></p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+  <script>
+    // Header sticky — classe .scrolled au scroll
+    (function() {
+      var header = document.querySelector('header');
+      if (!header) return;
+      window.addEventListener('scroll', function() {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
