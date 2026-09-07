@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO - Balises essentielles -->
+    <title>HBNova Bâti Beauvais | Rénovation, Extension, Isolation - Oise (60)</title>
+    <meta name="description" content="HBNova Bâti, entreprise de construction et rénovation à Beauvais. Extension, isolation, rénovation, carrelage, ravalement. Intervention dans l'Oise (60) et le Val-d'Oise (95). Devis gratuit.">
+    <meta name="author" content="HBNova Bâti">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.hbnovabati.fr/">
+
+    <!-- SEO Local - Données structurées -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "HBNova Bâti",
+      "description": "Entreprise de construction et rénovation à Beauvais. Extension, isolation thermique, ravalement de façade, carrelage, faïence.",
+      "url": "https://www.hbnovabati.fr",
+      "telephone": "+33783388572",
+      "email": "contact@hbnovabati.fr",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "67 Rue St Just des Marais",
+        "addressLocality": "Beauvais",
+        "postalCode": "60000",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 49.4295,
+        "longitude": 2.0814
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "08:00",
+          "closes": "12:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "14:00",
+          "closes": "18:00"
+        }
+      ],
+      "areaServed": ["Beauvais", "Oise", "Val-d'Oise", "Picardie", "Hauts-de-France"],
+      "priceRange": "€€",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Prestations HBNova Bâti",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Extension de maison" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Rénovation intérieure" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Isolation thermique extérieure (ITE)" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Isolation thermique intérieure (ITI)" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Carrelage et faïence" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ravalement de façade" } }
+        ]
+      }
+    }
+    </script>
+
+    <!-- Open Graph (partage sur Facebook, WhatsApp, LinkedIn...) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="HBNova Bâti Beauvais | Rénovation & Extension - Oise">
+    <meta property="og:description" content="Votre entreprise de rénovation et construction à Beauvais. Extension, isolation, ravalement, carrelage. Études gratuites.">
+    <meta property="og:image" content="https://www.hbnovabati.fr/img/chantier_banner.webp">
+    <meta property="og:url" content="https://www.hbnovabati.fr">
+    <meta property="og:locale" content="fr_FR">
+
+    <!-- Ressources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <!-- Précharge l'image du hero (LCP) : elle est chargée en background-image CSS,
+         donc découverte tardivement par le navigateur sans cette ligne -->
+    <link rel="preload" as="image" href="img/chantier_banner.webp" fetchpriority="high">
+    <link href="img/hbnova_icone.svg" rel="icon" type="image/svg+xml" />
+
+    <!-- CSS non-critique chargée en asynchrone (icônes + police) : elle ne bloque plus
+         l'affichage de la page pendant son téléchargement -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    </noscript>
+
+    <!-- Bootstrap reste chargé normalement : c'est lui qui pose toute la mise en page,
+         le différer provoquerait un flash de contenu non stylé bien plus gênant -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-anthracite">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <div class="d-flex align-items-center">
+                    <img src="img/hbnova_logo_sombre.svg" alt="Logo HBNova Bâti" width="165" height="55" class="me-2">
+                    <p class="fst-italic text-white mb-0">HBNova Bâti</p>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Ouvrir le menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto bg-anthracite">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#apropos">À Propos de Nous</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#prestations">Prestations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="realisation.html">Nos Réalisations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item nav-phone">
+                        <a class="nav-link nav-phone-link" href="tel:0783388572">
+                            <i class="fa fa-phone me-1"></i> 07 83 38 85 72
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Hero Banner -->
+<div class="hero-banner">
+    <!-- Overlay anthracite semi-transparent -->
+    <div class="hero-overlay"></div>
+    <!-- Lignes géométriques orange par dessus -->
+    <svg class="hero-geo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 560" preserveAspectRatio="xMidYMid slice">
+        <line x1="900" y1="0" x2="1440" y2="560" stroke="#e65100" stroke-width="1.5" opacity="0.5"/>
+        <line x1="980" y1="0" x2="1440" y2="460" stroke="#e65100" stroke-width="1" opacity="0.3"/>
+        <line x1="820" y1="0" x2="1440" y2="640" stroke="#e65100" stroke-width="0.8" opacity="0.2"/>
+        <polygon points="1440,560 1200,560 1440,350" fill="#e65100" opacity="0.1"/>
+        <polygon points="1440,560 1300,560 1440,430" fill="#e65100" opacity="0.15"/>
+        <line x1="0" y1="557" x2="1440" y2="557" stroke="#e65100" stroke-width="3" opacity="0.7"/>
+    </svg>
+    <div class="hero-content">
+        <p class="hero-zone"><i class="fa fa-map-marker-alt me-2"></i>Beauvais · Oise (60) · Val-d'Oise (95)</p>
+        <h1 class="hero-title">Votre projet,<br>notre engagement.</h1>
+        <div class="hero-accent-line"></div>
+        <p class="hero-sub">Construction · Rénovation · Isolation · Carrelage · Ravalement</p>
+        <div class="hero-btns">
+            <a href="contact.html" class="hero-btn-primary">Devis gratuit</a>
+            <a href="tel:0783388572" class="hero-btn-secondary"><i class="fa fa-phone me-2"></i>07 83 38 85 72</a>
+        </div>
+    </div>
+</div>
+
+<!-- À Propos -->
+
+<!-- Chiffres clés -->
+<div class="chiffres-bar">
+    <div class="chiffre-item">
+        <div class="chiffre-icon"><i class="fa fa-file-alt"></i></div>
+        <div class="chiffre-text">
+            <strong>Devis gratuit</strong>
+            <span>Sans engagement</span>
+        </div>
+    </div>
+    <div class="chiffre-sep"></div>
+    <div class="chiffre-item">
+        <div class="chiffre-icon"><i class="fa fa-clock"></i></div>
+        <div class="chiffre-text">
+            <strong>Réponse sous 24h</strong>
+            <span>Du lundi au vendredi</span>
+        </div>
+    </div>
+    <div class="chiffre-sep"></div>
+    <div class="chiffre-item">
+        <div class="chiffre-icon"><i class="fa fa-map-marker-alt"></i></div>
+        <div class="chiffre-text">
+            <strong>Oise & Val-d'Oise</strong>
+            <span>Zone d'intervention</span>
+        </div>
+    </div>
+    <div class="chiffre-sep"></div>
+    <div class="chiffre-item">
+        <div class="chiffre-icon"><i class="fa fa-hammer"></i></div>
+        <div class="chiffre-text">
+            <strong>6 prestations</strong>
+            <span>Tous corps d'état</span>
+        </div>
+    </div>
+    <div class="chiffre-sep"></div>
+    <div class="chiffre-item">
+        <div class="chiffre-icon"><i class="fa fa-shield-alt"></i></div>
+        <div class="chiffre-text">
+            <strong>RC Pro & Décennale</strong>
+            <span>Assurances partenaires</span>
+        </div>
+    </div>
+</div>
+
+<section id="apropos" class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="position-relative overflow-hidden ps-5 pt-5 h-100" style="min-height: 400px">
+                    <img class="position-absolute w-100 h-100" src="img/p2.webp" alt="Chantier HBNova Bâti" style="object-fit: cover" width="899" height="600" loading="lazy">
+                    <div class="position-absolute top-0 start-0 bg-white pe-3 pb-3" style="width: 200px; height: 200px">
+                        <div class="d-flex flex-column justify-content-center text-center bg-anthracite h-100 p-3">
+                            <p class="text-white mb-0">ÉTUDES GRATUITES</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="h-100">
+                    <div class="border-start border-5 border-orange ps-4 mb-4">
+                        <p class="text-body text-uppercase mb-2">À Propos de Nous</p>
+                        <h2 class="display-6 mb-0">15 ans d'expérience à votre service dans l'Oise et le Val-d'Oise</h2>
+                    </div>
+                    <p>Je m'appelle <strong>Théo</strong>, fondateur de <strong>HBNova Bâti</strong> et professionnel du BTP depuis <strong>15 ans</strong> dans l'Oise et le Val-d'Oise. J'ai créé HBNova Bâti avec une seule conviction : chaque client mérite un interlocuteur de confiance, disponible et transparent du premier contact jusqu'à la livraison du chantier.</p>
+                    <p>Que vous ayez un projet d'extension, de rénovation, d'isolation ou de ravalement, notre équipe d'artisans qualifiés vous accompagne à chaque étape — de la conception à la réalisation — avec sérieux, rigueur et respect de votre budget.</p>
+                    <div class="apropos-badge-row">
+                        <div class="apropos-badge">
+                            <span class="apropos-badge-num">15</span>
+                            <span class="apropos-badge-label">ans d'expérience</span>
+                        </div>
+                        <div class="apropos-badge">
+                            <span class="apropos-badge-num">6</span>
+                            <span class="apropos-badge-label">corps de métiers</span>
+                        </div>
+                        <div class="apropos-badge">
+                            <span class="apropos-badge-num">2</span>
+                            <span class="apropos-badge-label">départements</span>
+                        </div>
+                    </div>
+                    <div class="border-top mt-4 pt-4">
+                        <div class="row g-4">
+                            <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.1s">
+                                <i class="fa fa-check fa-2x text-orange flex-shrink-0 me-3"></i>
+                                <h3 class="mb-0">Des délais tenus</h3>
+                            </div>
+                            <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.3s">
+                                <i class="fa fa-check fa-2x text-orange flex-shrink-0 me-3"></i>
+                                <h3 class="mb-0">Toujours à votre écoute</h3>
+                            </div>
+                            <div class="col-sm-4 d-flex wow fadeIn" data-wow-delay="0.5s">
+                                <i class="fa fa-check fa-2x text-orange flex-shrink-0 me-3"></i>
+                                <h3 class="mb-0">Le respect des règles</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Facts -->
+<div class="container-fluid my-5 p-0">
+    <div class="row g-0">
+        <div class="col-xl-3 col-sm-6 wow fadeIn" data-wow-delay="0.1s">
+            <div class="position-relative">
+                <img class="img-fluid w-100" src="img/p4.webp" alt="Conception des plans" width="500" height="600" loading="lazy">
+                <div class="facts-overlay">
+                    <div class="display-1" aria-hidden="true">01</div>
+                    <h3 class="text-white mb-3">Conception des Plans</h3>
+                    <a class="text-white small" href="contact.html" aria-label="En savoir plus sur : Conception des Plans"><i class="fa fa-arrow-right ms-3"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 wow fadeIn" data-wow-delay="0.3s">
+            <div class="position-relative">
+                <img class="img-fluid w-100" src="img/prm.webp" alt="Permis de construire" width="500" height="600" loading="lazy">
+                <div class="facts-overlay">
+                    <div class="display-1" aria-hidden="true">02</div>
+                    <h3 class="text-white mb-3">Permis de Construire</h3>
+                    <a class="text-white small" href="contact.html" aria-label="En savoir plus sur : Permis de Construire"><i class="fa fa-arrow-right ms-3"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 wow fadeIn" data-wow-delay="0.5s">
+            <div class="position-relative">
+                <img class="img-fluid w-100" src="img/p1b.webp" alt="Extension et rénovation" width="500" height="600" loading="lazy">
+                <div class="facts-overlay">
+                    <div class="display-1" aria-hidden="true">03</div>
+                    <h3 class="text-white mb-3">Extension - Rénovation</h3>
+                    <a class="text-white small" href="contact.html" aria-label="En savoir plus sur : Extension - Rénovation"><i class="fa fa-arrow-right ms-3"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 wow fadeIn" data-wow-delay="0.7s">
+            <div class="position-relative">
+                <img class="img-fluid w-100" src="img/fact-4.webp" alt="Réaménagement intérieur" width="500" height="600" loading="lazy">
+                <div class="facts-overlay">
+                    <div class="display-1" aria-hidden="true">04</div>
+                    <h3 class="text-white mb-3">Réaménagement</h3>
+                    <a class="text-white small" href="contact.html" aria-label="En savoir plus sur : Réaménagement"><i class="fa fa-arrow-right ms-3"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pourquoi nous choisir -->
+<section class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="border-start border-5 border-orange ps-4 mb-5">
+                    <p class="text-body text-uppercase mb-2">Pourquoi nous choisir ?</p>
+                    <h2 class="display-6 mb-0">Une entreprise à taille humaine, engagée sur chaque chantier</h2>
+                </div>
+                <p class="mb-5">Chez <strong>HBNova Bâti</strong>, chaque projet est unique. Nous mettons notre expertise de 15 ans au service de votre logement, avec des artisans qualifiés, des matériaux sélectionnés et un suivi rigoureux du début à la fin. Votre satisfaction est notre priorité — pas question de vous laisser seul face aux imprévus.</p>
+                <div class="row gy-4 gx-4">
+                    <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
+                        <div class="d-flex align-items-start mb-1">
+                            <i class="fa fa-check fa-2x text-orange flex-shrink-0 me-3 mt-1"></i>
+                            <div>
+                                <h3 class="mb-1">Suivi complet des travaux</h3>
+                                <small class="text-muted">Un interlocuteur unique du devis à la livraison.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 wow fadeIn" data-wow-delay="0.2s">
+                        <div class="d-flex align-items-start mb-1">
+                            <i class="fa fa-check fa-2x text-orange flex-shrink-0 me-3 mt-1"></i>
+                            <div>
+                                <h3 class="mb-1">Conseil personnalisé</h3>
+                                <small class="text-muted">Des solutions adaptées à votre budget et vos besoins.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 wow fadeIn" data-wow-delay="0.3s">
+                        <div class="d-flex align-items-start mb-1">
+                            <i class="fa fa-check fa-2x text-orange flex-shrink-0 me-3 mt-1"></i>
+                            <div>
+                                <h3 class="mb-1">Artisans qualifiés</h3>
+                                <small class="text-muted">Nous travaillons uniquement avec des professionnels certifiés.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
+                        <div class="d-flex align-items-start mb-1">
+                            <i class="fa fa-check fa-2x text-orange flex-shrink-0 me-3 mt-1"></i>
+                            <div>
+                                <h3 class="mb-1">Délais respectés</h3>
+                                <small class="text-muted">Nous nous engageons sur un planning et nous le tenons.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 wow fadeIn" data-wow-delay="0.5s">
+                        <div class="d-flex align-items-start mb-1">
+                            <i class="fa fa-check fa-2x text-orange flex-shrink-0 me-3 mt-1"></i>
+                            <div>
+                                <h3 class="mb-1">Devis gratuit & rapide</h3>
+                                <small class="text-muted">Réponse sous 24h, sans engagement de votre part.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 wow fadeIn" data-wow-delay="0.6s">
+                        <div class="d-flex align-items-start mb-1">
+                            <i class="fa fa-check fa-2x text-orange flex-shrink-0 me-3 mt-1"></i>
+                            <div>
+                                <h3 class="mb-1">Exigence de qualité</h3>
+                                <small class="text-muted">Chaque chantier est réalisé dans les règles de l'art.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 wow fadeIn" data-wow-delay="0.7s">
+                        <div class="d-flex align-items-start mb-1">
+                            <i class="fa fa-check fa-2x text-orange flex-shrink-0 me-3 mt-1"></i>
+                            <div>
+                                <h3 class="mb-1">Décennale partenaires</h3>
+                                <small class="text-muted">Tous nos artisans sous-traitants sont assurés décennale.</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="position-relative overflow-hidden ps-5 pt-5 h-100" style="min-height: 400px">
+                    <img class="position-absolute w-100 h-100" src="img/t1.webp" alt="Travaux HBNova Bâti" style="object-fit: cover" width="700" height="400" loading="lazy">
+                    <div class="position-absolute top-0 start-0 bg-white pe-3 pb-3" style="width: 200px; height: 200px">
+                        <div class="d-flex flex-column justify-content-center text-center bg-anthracite h-100 p-3">
+                            <p class="text-white mb-0">ÉTUDES GRATUITES</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Prestations -->
+<section id="prestations" class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 align-items-end mb-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="border-start border-5 border-orange ps-4">
+                    <p class="text-body text-uppercase mb-2">Nos Prestations</p>
+                    <h2 class="display-6 mb-0">Solutions pour tous vos projets</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 text-lg-end wow fadeInUp" data-wow-delay="0.3s">
+                <a class="btn btn-orange py-3 px-5" href="realisation.html">Voir nos réalisations</a>
+            </div>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item bg-light overflow-hidden h-100">
+                    <img class="img-fluid" src="img/e1.webp" alt="Extension de maison" width="500" height="375" loading="lazy">
+                    <div class="service-text position-relative text-center h-100 p-4">
+                        <h3 class="mb-3">EXTENSION</h3>
+                        <p>Vous manquez de place ? HBNova Bâti conçoit et réalise votre extension sur mesure à Beauvais et dans l'Oise. Chambre, bureau, garage ou véranda — étude gratuite et accompagnement de la conception jusqu'à la livraison.</p>
+                        <a class="small" href="contact.html">Plus d'informations <i class="fa fa-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item bg-light overflow-hidden h-100">
+                    <img class="img-fluid" src="img/service-2.webp" alt="Rénovation intérieure" width="550" height="400" loading="lazy">
+                    <div class="service-text position-relative text-center h-100 p-4">
+                        <h3 class="mb-3">RÉNOVATION</h3>
+                        <p>Donnez une seconde vie à votre maison ! HBNova Bâti prend en charge tous vos travaux de rénovation intérieure à Beauvais et dans le 60. Cuisine, salle de bain, cloisons — dans le respect de votre budget et de vos délais.</p>
+                        <a class="small" href="contact.html">Plus d'informations <i class="fa fa-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item bg-light overflow-hidden h-100">
+                    <img class="img-fluid" src="img/s-1.webp" alt="Isolation thermique extérieure" width="500" height="333" loading="lazy">
+                    <div class="service-text position-relative text-center h-100 p-4">
+                        <h3 class="mb-3">ISOLATION PAR L'EXTÉRIEUR</h3>
+                        <p>Réduisez jusqu'à 30% votre facture de chauffage grâce à l'ITE. HBNova Bâti intervient à Beauvais et dans l'Oise pour isoler et embellir votre façade. Profitez des aides de l'État — devis gratuit.</p>
+                        <a class="small" href="contact.html">Plus d'informations <i class="fa fa-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item bg-light overflow-hidden h-100">
+                    <img class="img-fluid" src="img/service-4.webp" alt="Isolation thermique intérieure" width="550" height="400" loading="lazy">
+                    <div class="service-text position-relative text-center h-100 p-4">
+                        <h3 class="mb-3">ISOLATION PAR L'INTÉRIEUR</h3>
+                        <p>Améliorez le confort thermique et phonique de votre logement. Murs, combles, planchers — HBNova Bâti vous conseille la meilleure solution à Beauvais. Éligible aux aides MaPrimeRénov'.</p>
+                        <a class="small" href="contact.html">Plus d'informations <i class="fa fa-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item bg-light overflow-hidden h-100">
+                    <img class="img-fluid" src="img/c3.webp" alt="Carrelage et faïence" width="500" height="334" loading="lazy">
+                    <div class="service-text position-relative text-center h-100 p-4">
+                        <h3 class="mb-3">CARRELAGE - FAÏENCE</h3>
+                        <p>Sol, mur, salle de bain, cuisine, terrasse — HBNova Bâti réalise tous vos travaux de carrelage et faïence à Beauvais et dans l'Oise. Pose sur neuf comme sur ancien, finitions impeccables.</p>
+                        <a class="small" href="contact.html">Plus d'informations <i class="fa fa-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item bg-light overflow-hidden h-100">
+                    <img class="img-fluid" src="img/r2.webp" alt="Ravalement de façade" width="500" height="334" loading="lazy">
+                    <div class="service-text position-relative text-center h-100 p-4">
+                        <h3 class="mb-3">RAVALEMENT DE FAÇADE</h3>
+                        <p>Votre façade a besoin d'un coup de jeune ? HBNova Bâti réalise votre ravalement avec enduit monocouche à Beauvais et dans le 60. Maisons neuves comme anciennes — façade propre, protégée et valorisée. Devis gratuit.</p>
+                        <a class="small" href="contact.html">Plus d'informations <i class="fa fa-arrow-right ms-3"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Partenaires -->
+<div class="partenaires-section">
+    <div class="container">
+        <p class="partenaires-titre">Nos fournisseurs & partenaires</p>
+        <div class="partenaires-grid">
+            <div class="partenaire-item">
+                <span class="partenaire-logo">Point P</span>
+            </div>
+            <div class="partenaire-item">
+                <span class="partenaire-logo">BigMat</span>
+            </div>
+            <div class="partenaire-item">
+                <span class="partenaire-logo">Weber</span>
+            </div>
+            
+            <div class="partenaire-item">
+                <span class="partenaire-logo">Isover</span>
+            </div>
+            <div class="partenaire-item">
+                <span class="partenaire-logo">Knauf</span>
+            </div>
+            <div class="partenaire-item">
+                <span class="partenaire-logo">Zolpan</span>
+            </div>
+            <div class="partenaire-item">
+                <span class="partenaire-logo">Mapei</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Avis clients — SECTION PRÊTE À RECEVOIR DE VRAIS AVIS
+     Remplacer le contenu des 3 cartes ci-dessous par de vrais avis (texte réel, prénom réel, ville réelle),
+     ou substituer ce bloc par un widget d'avis Google (fiche Google Business Profile) une fois celle-ci créée.
+     Ne jamais laisser ces exemples en ligne tels quels : les faux avis sont interdits (DGCCRF) et sanctionnés par Google. -->
+<section id="avis" class="avis-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-7">
+                <div class="border-start border-5 border-orange ps-4">
+                    <p class="text-body text-uppercase mb-2">Avis clients</p>
+                    <h2 class="display-6 mb-0">Ce que nos clients pensent de nous</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="avis-card">
+                    <div class="avis-stars" aria-hidden="true">★★★★★</div>
+                    <p class="avis-text">« Exemple d'avis — à remplacer par un vrai retour client avant mise en ligne. Décrire ici la qualité du chantier, le respect des délais, le sérieux de l'équipe. »</p>
+                    <p class="avis-auteur">Prénom Nom — Ville</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="avis-card">
+                    <div class="avis-stars" aria-hidden="true">★★★★★</div>
+                    <p class="avis-text">« Exemple d'avis — à remplacer par un vrai retour client avant mise en ligne. Décrire ici la relation client, le devis, la propreté du chantier. »</p>
+                    <p class="avis-auteur">Prénom Nom — Ville</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="avis-card">
+                    <div class="avis-stars" aria-hidden="true">★★★★★</div>
+                    <p class="avis-text">« Exemple d'avis — à remplacer par un vrai retour client avant mise en ligne. Décrire ici le résultat final et la recommandation. »</p>
+                    <p class="avis-auteur">Prénom Nom — Ville</p>
+                </div>
+            </div>
+        </div>
+        <p class="avis-note"><i class="fa fa-info-circle me-2"></i>Emplacement réservé — à remplacer par de vrais avis clients (manuellement, ou via un widget Google Avis une fois la fiche Google Business Profile créée).</p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer-hbnova">
+
+    <!-- CTA bande -->
+    <div class="footer-cta-band">
+        <div class="container">
+            <div class="footer-cta-inner">
+                <div>
+                    <h2 class="footer-cta-title">Prêt pour votre prochain projet ?</h2>
+                    <p class="footer-cta-sub">Contactez-nous pour une étude et un devis gratuits — Réponse sous 24h</p>
+                </div>
+                <div class="footer-cta-btns">
+                    <a href="contact.html" class="footer-btn-primary">Devis gratuit</a>
+                    <a href="tel:0783388572" class="footer-btn-secondary"><i class="fa fa-phone me-2"></i>07 83 38 85 72</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Corps du footer -->
+    <div class="footer-body">
+        <div class="container">
+            <div class="row g-4 py-5">
+
+                <!-- Colonne 1 — Identité -->
+                <div class="col-lg-3 col-md-6">
+                    <a href="index.html" class="footer-brand">
+                        <img src="img/hbnova_logo_sombre.svg" alt="Logo HBNova Bâti" width="135" height="45" class="mb-3">
+                    </a>
+                    <p class="footer-adresse">
+                        <i class="fa fa-map-marker-alt me-2" style="color:#e65100;"></i>
+                        67, Rue St Just des Marais<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;60000 Beauvais
+                    </p>
+                    <p class="footer-adresse">
+                        <i class="fa fa-phone me-2" style="color:#e65100;"></i>
+                        <a href="tel:0783388572" class="footer-contact-link">07 83 38 85 72</a>
+                    </p>
+                    <p class="footer-adresse">
+                        <i class="fa fa-map me-2" style="color:#e65100;"></i>
+                        Oise (60) · Val-d'Oise (95)
+                    </p>
+                </div>
+
+                <!-- Colonne 2 — Navigation -->
+                <div class="col-lg-2 col-md-6">
+                    <h3 class="footer-col-title">Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fa fa-chevron-right me-2"></i>Accueil</a></li>
+                        <li><a href="#apropos"><i class="fa fa-chevron-right me-2"></i>À Propos</a></li>
+                        <li><a href="#prestations"><i class="fa fa-chevron-right me-2"></i>Prestations</a></li>
+                        <li><a href="realisation.html"><i class="fa fa-chevron-right me-2"></i>Réalisations</a></li>
+                        <li><a href="contact.html"><i class="fa fa-chevron-right me-2"></i>Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 3 — Prestations -->
+                <div class="col-lg-3 col-md-6">
+                    <h3 class="footer-col-title">Nos Prestations</h3>
+                    <ul class="footer-links">
+                        <li><a href="#prestations"><i class="fa fa-chevron-right me-2"></i>Extension de maison</a></li>
+                        <li><a href="#prestations"><i class="fa fa-chevron-right me-2"></i>Rénovation intérieure</a></li>
+                        <li><a href="#prestations"><i class="fa fa-chevron-right me-2"></i>Isolation extérieure (ITE)</a></li>
+                        <li><a href="#prestations"><i class="fa fa-chevron-right me-2"></i>Isolation intérieure (ITI)</a></li>
+                        <li><a href="#prestations"><i class="fa fa-chevron-right me-2"></i>Carrelage - Faïence</a></li>
+                        <li><a href="#prestations"><i class="fa fa-chevron-right me-2"></i>Ravalement de façade</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 4 — Horaires -->
+                <div class="col-lg-2 col-md-6">
+                    <h3 class="footer-col-title">Horaires</h3>
+                    <ul class="footer-horaires">
+                        <li><span>Lundi – Vendredi</span></li>
+                        <li class="footer-heure">8h00 – 12h00</li>
+                        <li class="footer-heure">14h00 – 18h00</li>
+                        <li style="margin-top:8px;"><span>Samedi – Dimanche</span></li>
+                        <li class="footer-heure footer-heure--off">Fermé</li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 5 — Zone -->
+                <div class="col-lg-2 col-md-6">
+                    <h3 class="footer-col-title">Zone d'intervention</h3>
+                    <div class="footer-zones">
+                        <span class="footer-zone-tag">Beauvais</span>
+                        <span class="footer-zone-tag">Oise (60)</span>
+                        <span class="footer-zone-tag">Val-d'Oise (95)</span>
+                        <span class="footer-zone-tag">Compiègne</span>
+                        <span class="footer-zone-tag">Creil</span>
+                        <span class="footer-zone-tag">Cergy</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Barre copyright -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="footer-bottom-inner">
+                <p>&copy; 2026 HBNova Bâti — Tous droits réservés</p>
+                <p><a href="mentions-legales.html">Mentions légales & Politique de confidentialité</a></p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<script>
+</script>
+
+
+  <!-- Scroll reveal natif (remplace WOW.js) -->
+  <script>
+    (function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.wow').forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
+  </script>
+
+  <!-- CTA flottant mobile -->
+  <a href="contact.html" class="cta-float-mobile" id="cta-float" aria-label="Demander un devis gratuit">
+    <i class="fa fa-envelope"></i><span>Devis gratuit</span>
+  </a>
+
+  <!-- Bouton retour haut de page -->
+  <button class="back-to-top" id="back-to-top" aria-label="Retour en haut de page" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fa fa-chevron-up"></i>
+  </button>
+
+  <script>
+    // CTA flottant + back-to-top
+    var ctaFloat = document.getElementById('cta-float');
+    var backTop  = document.getElementById('back-to-top');
+    window.addEventListener('scroll', function() {
+      var show = window.scrollY > 400;
+      if (ctaFloat) ctaFloat.classList.toggle('visible', show);
+      if (backTop)  backTop.classList.toggle('visible', show);
+    });
+  </script>
+
+  <script>
+    // Header sticky — classe .scrolled au scroll
+    (function() {
+      var header = document.querySelector('header');
+      if (!header) return;
+      window.addEventListener('scroll', function() {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
