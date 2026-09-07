@@ -1,0 +1,20 @@
+<svg width="600" height="170" viewBox="0 0 600 170" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="600" height="170" rx="14" fill="#fff"/>
+  <polygon points="0,0 115,0 0,75" fill="#e65100"/>
+
+  <!-- H -->
+  <rect x="48" y="43" width="12" height="65" rx="3" fill="#2c2c2a"/>
+  <rect x="48" y="73" width="38" height="12" rx="3" fill="#e65100"/>
+  <rect x="74" y="43" width="12" height="65" rx="3" fill="#2c2c2a"/>
+  <!-- B -->
+  <rect x="98" y="43" width="12" height="65" rx="3" fill="#2c2c2a"/>
+  <path d="M110,43 Q142,43 142,60 Q142,75 110,75" fill="none" stroke="#2c2c2a" stroke-width="12" stroke-linecap="round"/>
+  <path d="M110,75 Q146,75 146,92 Q146,108 110,108" fill="none" stroke="#e65100" stroke-width="12" stroke-linecap="round"/>
+
+  <rect x="176" y="45" width="2" height="60" rx="1" fill="#e65100" opacity="0.4"/>
+
+  <text x="194" y="83" font-family="Arial Black, sans-serif" font-size="32" font-weight="900" fill="#2c2c2a" letter-spacing="2">NOVA</text>
+  <text x="196" y="103" font-family="Arial, sans-serif" font-size="13" fill="#e65100" letter-spacing="8">BÂTI</text>
+  <line x1="196" y1="113" x2="590" y2="113" stroke="#e65100" stroke-width="1.5"/>
+  <text x="196" y="127" font-family="Arial, sans-serif" font-size="9" fill="#aaa" letter-spacing="3">CONSTRUCTION · RÉNOVATION · BEAUVAIS</text>
+</svg>
