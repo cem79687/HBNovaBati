@@ -78,6 +78,26 @@ nav ul li a,
 /* =============================
    Facts overlay
    ============================= */
+/* Titre au-dessus du bloc "4 étapes" (distingue ce bloc de la grille Prestations juste après) */
+.steps-eyebrow {
+    max-width: 700px;
+    margin: 0 auto 32px;
+    padding: 0 20px;
+    text-align: center;
+}
+.steps-eyebrow p {
+    color: var(--orange);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+.steps-eyebrow h2 {
+    font-size: 28px;
+    color: var(--anthracite);
+}
+
 .facts-overlay {
     position: absolute;
     padding: 30px;
