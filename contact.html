@@ -139,6 +139,98 @@
             color: #2c2c2a;
             margin-bottom: 6px;
         }
+        .form-hint {
+            display: block;
+            font-size: 12px;
+            color: #888;
+            margin-top: 6px;
+        }
+        .form-label-hint {
+            font-weight: 500;
+            text-transform: none;
+            letter-spacing: 0;
+            color: #888;
+            font-size: 12px;
+        }
+
+        /* Zone de dépôt de fichier */
+        .upload-zone {
+            position: relative;
+            border: 2px dashed #f0c4a8;
+            border-radius: 10px;
+            background: #fff8f4;
+            padding: 28px 20px;
+            text-align: center;
+            transition: border-color .2s ease, background .2s ease;
+        }
+        .upload-zone.is-dragover,
+        .upload-zone:hover {
+            border-color: #e65100;
+            background: #fef2ea;
+        }
+        .upload-zone input[type="file"] {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .upload-zone-content {
+            pointer-events: none;
+        }
+        .upload-zone-icon {
+            display: block;
+            font-size: 28px;
+            color: #e65100;
+            margin-bottom: 10px;
+        }
+        .upload-zone-content span {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #2c2c2a;
+            text-transform: uppercase;
+            letter-spacing: .3px;
+        }
+        .upload-zone-content .upload-zone-filename {
+            display: block;
+            margin-top: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: none;
+            color: #555;
+        }
+
+        /* Case RGPD */
+        .form-check-consent {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .form-check-consent input[type="checkbox"] {
+            margin-top: 4px;
+            width: 16px;
+            height: 16px;
+            accent-color: #e65100;
+            flex-shrink: 0;
+        }
+        .form-check-consent label {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.5;
+        }
+        .form-check-consent label a {
+            color: #bf360c;
+            text-decoration: underline;
+        }
+
+        /* Ligne de réassurance sous le bouton */
+        .form-trust-line {
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            margin: 14px 0 0;
+        }
         .form-control, .form-select {
             border: 1.5px solid #e8e8e8;
             border-radius: 6px;
@@ -343,7 +435,7 @@
                 <h2>Demandez votre devis gratuit</h2>
                 <p class="form-subtitle">Réponse garantie <span>sous 24h</span> — Sans engagement</p>
 
-                <form method="post" id="contactForm" name="contactForm" action="php/send-mail.php" novalidate>
+                <form method="post" id="contactForm" name="contactForm" action="php/send-mail.php" enctype="multipart/form-data" novalidate>
                     <!-- Piège à robots (anti-spam) : champ invisible pour les humains, laissé vide -->
                     <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
                         <label for="site_web">Ne pas remplir ce champ</label>
@@ -385,9 +477,30 @@
                                 placeholder="Dites-nous en plus sur votre projet : localisation, superficie, délais souhaités..." required></textarea>
                         </div>
                         <div class="col-12">
+                            <label for="attachment" class="form-label">Photos du chantier <span class="form-label-hint">(facultatif · jpg/png/pdf · max 5 Mo)</span></label>
+                            <div class="upload-zone" id="uploadZone">
+                                <input type="file" name="attachment" id="attachment"
+                                    accept=".pdf,.png,.jpg,.jpeg,application/pdf,image/png,image/jpeg">
+                                <div class="upload-zone-content" id="uploadZoneContent">
+                                    <i class="fa fa-cloud-upload-alt upload-zone-icon"></i>
+                                    <span>Cliquez ou glissez un fichier ici</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="cf-turnstile" data-sitekey="VOTRE_SITE_KEY_TURNSTILE"></div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-check-consent">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <label for="consent">J'accepte que mes données soient utilisées pour traiter ma demande de devis, conformément à la <a href="mentions-legales.html#rgpd" target="_blank">politique de confidentialité</a>. *</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
                             <button type="submit" class="btn-submit">
                                 <i class="fa fa-paper-plane me-2"></i> Envoyer ma demande
                             </button>
+                            <p class="form-trust-line"><i class="fa fa-lock me-1"></i> Données sécurisées · Devis gratuit &amp; sans engagement</p>
                         </div>
                     </div>
                 </form>
@@ -495,6 +608,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script src="js/main.js"></script>
 
 

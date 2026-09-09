@@ -15,6 +15,13 @@ RewriteRule ^ https://www.%1%{REQUEST_URI} [L,R=301]
 # --- Page 404 personnalisée ---
 ErrorDocument 404 /404.html
 
+# --- Limite d'upload pour la pièce jointe du formulaire de contact (5 Mo) ---
+# La valeur par défaut de PHP (souvent 2 Mo) est trop basse pour le formulaire de contact.
+<IfModule mod_php.c>
+    php_value upload_max_filesize 8M
+    php_value post_max_size 10M
+</IfModule>
+
 # --- Compression Gzip (page plus légère à transférer) ---
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml

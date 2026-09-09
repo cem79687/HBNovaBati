@@ -10,6 +10,10 @@
  * 3. Remplir les constantes SMTP_* ci-dessous avec les identifiants de la boîte mail
  *    o2switch (Mutu > Comptes e-mail > contact@hbnovabati.fr), ou un service tiers
  *    (Brevo/SendinBlue, etc.) si tu préfères ne pas utiliser directement le SMTP o2switch.
+ * 4. Créer un widget sur https://dash.cloudflare.com/ > Turnstile, et remplir :
+ *      - TURNSTILE_SECRET_KEY ci-dessous (clé secrète, jamais exposée côté client)
+ *      - le data-sitekey dans contact.html (clé publique, déjà en place, à remplacer
+ *        "VOTRE_SITE_KEY_TURNSTILE" par la vraie clé site)
  */
 
 header('Content-Type: application/json; charset=utf-8');
@@ -20,6 +24,14 @@ define('SMTP_USER', 'contact@hbnovabati.fr');    // adresse d'envoi
 define('SMTP_PASS', 'A_COMPLETER');              // mot de passe de la boîte mail
 define('SMTP_PORT', 587);                        // 587 (TLS) ou 465 (SSL)
 define('MAIL_TO', 'contact@hbnovabati.fr');      // destinataire des demandes
+
+// ---- Configuration Cloudflare Turnstile à compléter ----
+define('TURNSTILE_SECRET_KEY', 'A_COMPLETER');   // clé secrète (dashboard Cloudflare > Turnstile)
+
+// ---- Configuration pièce jointe ----
+define('ATTACHMENT_MAX_SIZE', 5 * 1024 * 1024);  // 5 Mo
+define('ATTACHMENT_ALLOWED_MIME', ['application/pdf', 'image/png', 'image/jpeg']);
+define('ATTACHMENT_ALLOWED_EXT', ['pdf', 'png', 'jpg', 'jpeg']);
 // -----------------------------------------
 
 function respond($success, $message = '') {
@@ -35,6 +47,31 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // Piège à robots : si rempli, on répond "succès" sans envoyer de mail (ne pas alerter le bot)
 if (!empty($_POST['site_web'])) {
     respond(true);
+}
+
+// ---- Vérification Cloudflare Turnstile ----
+$turnstileToken = $_POST['cf-turnstile-response'] ?? '';
+if ($turnstileToken === '') {
+    respond(false, 'Merci de valider la vérification de sécurité.');
+}
+
+$verify = curl_init('https://challenges.cloudflare.com/turnstile/v0/siteverify');
+curl_setopt_array($verify, [
+    CURLOPT_POST => true,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_POSTFIELDS => http_build_query([
+        'secret'   => TURNSTILE_SECRET_KEY,
+        'response' => $turnstileToken,
+        'remoteip' => $_SERVER['REMOTE_ADDR'] ?? '',
+    ]),
+    CURLOPT_TIMEOUT => 10,
+]);
+$verifyResult = curl_exec($verify);
+curl_close($verify);
+$verifyData = json_decode($verifyResult, true);
+
+if (empty($verifyData['success'])) {
+    respond(false, 'Échec de la vérification de sécurité. Merci de réessayer.');
 }
 
 // Récupération et nettoyage des champs
@@ -53,6 +90,41 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 if (!preg_match('/^(\+33|0)[1-9](\s?\d{2}){4}$/', $phone)) {
     respond(false, 'Numéro de téléphone invalide.');
+}
+if (empty($_POST['consent'])) {
+    respond(false, 'Merci de cocher la case de consentement pour l\'utilisation de vos données.');
+}
+
+// ---- Validation de la pièce jointe (facultative) ----
+$attachmentPath = null;
+$attachmentName = null;
+
+if (isset($_FILES['attachment']) && $_FILES['attachment']['error'] !== UPLOAD_ERR_NO_FILE) {
+    $file = $_FILES['attachment'];
+
+    if ($file['error'] !== UPLOAD_ERR_OK) {
+        respond(false, "Erreur lors de l'envoi du fichier. Merci de réessayer.");
+    }
+    if ($file['size'] > ATTACHMENT_MAX_SIZE) {
+        respond(false, 'Le fichier joint dépasse la taille maximale (5 Mo).');
+    }
+
+    // On vérifie le vrai type du fichier (le nom/extension peut être falsifié), pas seulement
+    // l'en-tête envoyé par le navigateur.
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $realMime = finfo_file($finfo, $file['tmp_name']);
+    finfo_close($finfo);
+
+    $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+
+    if (!in_array($realMime, ATTACHMENT_ALLOWED_MIME, true) || !in_array($ext, ATTACHMENT_ALLOWED_EXT, true)) {
+        respond(false, 'Le fichier joint doit être un PDF, un PNG ou un JPG.');
+    }
+
+    $attachmentPath = $file['tmp_name'];
+    // Nom de fichier assaini (on ne fait pas confiance au nom fourni par le client)
+    $safeBase = preg_replace('/[^a-zA-Z0-9_-]/', '_', pathinfo($file['name'], PATHINFO_FILENAME));
+    $attachmentName = ($safeBase !== '' ? $safeBase : 'piece-jointe') . '.' . $ext;
 }
 
 require __DIR__ . '/../vendor/autoload.php';
@@ -76,6 +148,10 @@ try {
     $mail->addAddress(MAIL_TO);
     $mail->addReplyTo($email, $name);
 
+    if ($attachmentPath !== null) {
+        $mail->addAttachment($attachmentPath, $attachmentName);
+    }
+
     $mail->isHTML(false);
     $mail->Subject = 'Nouvelle demande de devis — ' . $name;
     $mail->Body = "Nouvelle demande via le site hbnovabati.fr\n\n"
@@ -83,7 +159,8 @@ try {
         . "Email : {$email}\n"
         . "Téléphone : {$phone}\n"
         . "Type de projet : " . ($budget !== '' ? $budget : 'Non précisé') . "\n\n"
-        . "Message :\n{$message}\n";
+        . "Message :\n{$message}\n"
+        . ($attachmentName !== null ? "\nPièce jointe : {$attachmentName}\n" : '');
 
     $mail->send();
     respond(true);

@@ -32,28 +32,101 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Validation basique côté client (en plus des attributs HTML5 required/pattern déjà en place)
-    function isValid() {
+    // Retourne null si tout est valide, ou un message d'erreur précis sinon.
+    function getValidationError() {
         var name = form.querySelector('#name');
         var email = form.querySelector('#email');
         var phone = form.querySelector('#phone');
         var message = form.querySelector('#message');
 
         if (!name.value.trim() || !email.value.trim() || !phone.value.trim() || !message.value.trim()) {
-            return false;
+            return 'Merci de vérifier les champs obligatoires (nom, email, téléphone, message).';
         }
         var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email.value.trim())) {
-            return false;
+            return 'Merci de vérifier les champs obligatoires (nom, email, téléphone, message).';
         }
-        return true;
+
+        // Pièce jointe (facultative) : on vérifie type et taille si un fichier est fourni
+        var attachment = form.querySelector('#attachment');
+        if (attachment && attachment.files && attachment.files.length > 0) {
+            var file = attachment.files[0];
+            var allowedTypes = ['application/pdf', 'image/png', 'image/jpeg'];
+            var maxSize = 5 * 1024 * 1024; // 5 Mo
+            if (allowedTypes.indexOf(file.type) === -1) {
+                return 'Le fichier joint doit être un PDF, un PNG ou un JPG.';
+            }
+            if (file.size > maxSize) {
+                return 'Le fichier joint dépasse la taille maximale (5 Mo).';
+            }
+        }
+
+        // Consentement RGPD obligatoire
+        var consent = form.querySelector('#consent');
+        if (consent && !consent.checked) {
+            return 'Merci de cocher la case de consentement pour l\'utilisation de vos données.';
+        }
+
+        return null;
+    }
+
+    // Zone de dépôt de fichier : affichage du nom choisi + glisser-déposer
+    var uploadZone = document.getElementById('uploadZone');
+    var attachmentInput = document.getElementById('attachment');
+    var uploadZoneContent = document.getElementById('uploadZoneContent');
+    var uploadZoneDefaultHTML = uploadZoneContent ? uploadZoneContent.innerHTML : '';
+
+    function updateUploadZoneLabel() {
+        if (!attachmentInput || !uploadZoneContent) return;
+        if (attachmentInput.files && attachmentInput.files.length > 0) {
+            uploadZoneContent.innerHTML = '<i class="fa fa-check-circle upload-zone-icon" style="color:#2e7d32;"></i>' +
+                '<span>Fichier sélectionné</span>' +
+                '<span class="upload-zone-filename">' + attachmentInput.files[0].name + '</span>';
+        } else {
+            uploadZoneContent.innerHTML = uploadZoneDefaultHTML;
+        }
+    }
+
+    if (attachmentInput) {
+        attachmentInput.addEventListener('change', updateUploadZoneLabel);
+    }
+
+    if (uploadZone && attachmentInput) {
+        ['dragover', 'dragenter'].forEach(function (evt) {
+            uploadZone.addEventListener(evt, function (e) {
+                e.preventDefault();
+                uploadZone.classList.add('is-dragover');
+            });
+        });
+        ['dragleave', 'dragend'].forEach(function (evt) {
+            uploadZone.addEventListener(evt, function () {
+                uploadZone.classList.remove('is-dragover');
+            });
+        });
+        uploadZone.addEventListener('drop', function (e) {
+            e.preventDefault();
+            uploadZone.classList.remove('is-dragover');
+            if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                attachmentInput.files = e.dataTransfer.files;
+                updateUploadZoneLabel();
+            }
+        });
     }
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
         hideMessages();
 
-        if (!isValid()) {
-            showWarning('Merci de vérifier les champs obligatoires (nom, email, téléphone, message).');
+        var validationError = getValidationError();
+        if (validationError) {
+            showWarning(validationError);
+            return;
+        }
+
+        // Vérifie que le widget Cloudflare Turnstile a bien été validé
+        var turnstileResponse = form.querySelector('[name="cf-turnstile-response"]');
+        if (!turnstileResponse || !turnstileResponse.value) {
+            showWarning('Merci de valider la vérification de sécurité avant d\'envoyer.');
             return;
         }
 
@@ -62,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (honeypot && honeypot.value.trim() !== '') {
             showSuccess();
             form.reset();
+            updateUploadZoneLabel();
             return;
         }
 
@@ -87,6 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (data && data.success) {
                     showSuccess();
                     form.reset();
+                    updateUploadZoneLabel();
                 } else {
                     showWarning(data && data.message ? data.message : null);
                 }
