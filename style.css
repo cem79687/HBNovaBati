@@ -61,11 +61,6 @@ nav ul li a,
     text-decoration: none;
     font-size: 16px;
 }
-/* Corrigé : navbar-toggler (faute supprimée) */
-.navbar-toggler {
-    color: tomato;
-}
-
 /* =============================
    Contenu
    ============================= */
@@ -154,10 +149,6 @@ nav ul li a,
 }
 
 /* Navbar */
-.navbar-dark.bg-anthracite .navbar-toggler-icon {
-    filter: invert(1);
-}
-
 /* =============================
    Navbar mobile — corrections
    ============================= */
@@ -199,11 +190,63 @@ nav ul li a,
 .navbar-toggler {
     border-color: rgba(230, 81, 0, 0.6);
     color: var(--orange-on-dark);
-    padding: 6px 10px;
+    padding: 9px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .navbar-toggler:focus {
     box-shadow: 0 0 0 2px rgba(230, 81, 0, 0.3);
+}
+
+/* Icône hamburger → croix à l'ouverture (piloté par aria-expanded, géré par Bootstrap) */
+.navbar-toggler-icon {
+    position: relative;
+    width: 22px;
+    height: 16px;
+    background: none !important;
+}
+.navbar-toggler-icon span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--orange-on-dark);
+    border-radius: 2px;
+    transition: transform .2s ease, opacity .2s ease, top .2s ease;
+}
+.navbar-toggler-icon span:nth-child(1) { top: 0; }
+.navbar-toggler-icon span:nth-child(2) { top: 7px; }
+.navbar-toggler-icon span:nth-child(3) { top: 14px; }
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon span:nth-child(1) {
+    top: 7px;
+    transform: rotate(45deg);
+}
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon span:nth-child(2) {
+    opacity: 0;
+}
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon span:nth-child(3) {
+    top: 7px;
+    transform: rotate(-45deg);
+}
+
+/* Bouton "Devis gratuit" dans le menu mobile uniquement */
+.menu-cta {
+    display: block;
+    margin: 6px 20px 16px;
+    background: var(--orange-hover);
+    color: #fff !important;
+    text-align: center;
+    padding: 12px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+}
+.menu-cta:hover {
+    background: var(--orange-hover-2);
+    color: #fff !important;
 }
 
 /* Logo dans la navbar — bonne taille mobile */
